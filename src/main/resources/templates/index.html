@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}"></title>
+    <link rel="stylesheet" th:href="@{'/css/style.css'}">
+</head>
+
+<body>
+<h1 th:text="${titulo}" class="title"></h1>
+<div class="container">
+    <div class="container">
+        <div th:each="empleado: ${empleados}" class="card">
+            <img th:src="${empleado.urlPhoto}" width="150px" class="card-image">
+            <div class="card-content">
+                <h4>Nombre completo:</h4>
+                <span th:text="${empleado.nombre_empleado}"></span>
+                <h4>Cargo</h4>
+                <span th:text="${empleado.cargo_empleado}"></span>
+                <h4>Ubicación sucursal:</h4>
+                <span th:text="${empleado.sucursal_empleado.nombre_sucursal} + ' - ' + ${empleado.sucursal_empleado.codigo_ciudad.nombre_ciudad}"></span>
+                <h4>Ciudad:</h4>
+                <span th:text="${empleado.ciudad_empleado.nombre_ciudad}"></span>
+                <h4>Horario:</h4>
+                <span th:text="${empleado.horario_empleado.dias} + ' (' + ${empleado.horario_empleado.horaInicio} + ' - ' + ${empleado.horario_empleado.horaFin} + ')'"></span>
+                <h4>Correo:</h4>
+                <span th:text="${empleado.email_empleado}"></span>
+                <h4>Teléfono:</h4>
+                <span th:text="${empleado.telefono_empleado}"></span>
+                <a th:href="${empleado.pagina_web_empleado}"><button>Sitio Web</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
